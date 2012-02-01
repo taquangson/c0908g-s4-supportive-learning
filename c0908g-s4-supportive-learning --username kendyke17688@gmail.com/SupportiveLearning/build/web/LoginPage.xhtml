@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        
+        
+    </h:head>
+    <h:body>
+        
+        <ui:composition template="./cmmTemplate.xhtml">
+             <ui:define name="top">  
+            </ui:define>
+             <ui:define name="left">
+
+            </ui:define>
+             <ui:define name="right">
+
+            </ui:define>
+            <ui:define name="content">
+
+                <form action="j_security_check" method="POST" name="form1" onsubmit="return validate()">
+                    <h2 style="text-align: center">Member Login</h2>
+                    <div  style="text-align: center">Using your username and password.<br/>
+(Cookies must be enabled in your browser)</div>
+                    <table style="width: 350px; margin: auto; border: 0px">
+                        <tr>
+                            <td style="text-align: right; width: 100px"><h4>Username :</h4></td>
+                            <td><input id="user" style="width: 200px" type="Text" name="j_username"/><span style="color: red">(*)</span></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; width: 100px"><h4>Password :</h4></td>
+                            <td><input id="pass" style="width: 200px" type="PASSWORD" name="j_password"/><span style="color: red">(*)</span></td>
+                        </tr>
+                        <tr style="text-align: center">
+                            <td colspan="2" style="text-align: center">
+                                <input style="width: 90px" TYPE="SUBMIT" VALUE="Log In"/>
+                            </td>                    
+                        </tr>
+                    </table>
+                    <div style="text-align: center"> The field <span style="color: red">(*)</span> is required.</div>
+                </form>
+            </ui:define>
+             <ui:define name="bottom">
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

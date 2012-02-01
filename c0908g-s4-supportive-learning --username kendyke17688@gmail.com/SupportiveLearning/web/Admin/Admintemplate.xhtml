@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+
+    <h:head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Your description goes here" />
+        <meta name="keywords" content="your,keywords,goes,here" />
+        <meta name="author" content="Your Name" />
+        <link rel="stylesheet" type="text/css" href="#{jSFController.path}/variant-creative.css" media="all" />
+        <title>Royal Educational Academy</title>
+        
+        <style>
+            .columnleft {
+                text-align: right;
+                width: 200px;
+            }
+            .columnright {
+                text-align: left;
+                width: 300px;
+            }
+        </style>
+        
+    </h:head>
+
+    <h:body>
+        <div id="wrap">
+            <div id="header">
+                <h1><a href="#{jSFController.path}/index.xhtml">Royal Educational Academy</a></h1>
+                <h2 style="text-align: center">-Admin cPanel-</h2>
+                <ui:insert name="top">Top</ui:insert>
+            </div>
+
+            <div id="leftside">
+                <ul class="avmenu">
+                    <li><a class="current" href="#{jSFController.path}/Admin/HomePage.xhtml">Dashboard</a></li>
+                    <li><a href="#{jSFController.path}/Admin/UserManagement.xhtml">User Management</a></li>
+                    <li><a href="#">FAQ Management</a></li>
+                    <li><a href="#">Subpages</a>
+                        <ul>
+                            <li><a href="#">Subpage 1</a></li>
+                            <li><a href="#">Subpage 2</a></li>
+                            <li><a href="#">Subpage 3</a></li>
+                        </ul></li>
+                </ul>
+
+                <div class="announce">
+                    <script src="http://24timezones.com/js/swfobject.js" language="javascript"></script>
+                    <script src="http://24timezones.com/timescript/maindata.js.php?city=591691" language="javascript"></script>
+                    <table><tr><td><div id="flash_container_tt4f143a442eb98"></div><script type="text/javascript">
+                            var flashMap = new SWFObject("http://24timezones.com/timescript/clock_final.swf", "main", "125", "125", "7.0.22", "#FFFFFF", true)
+                            flashMap.addParam("movie",      "http://24timezones.com/timescript/clock_final.swf");
+                            flashMap.addParam("quality",    "high");
+                            flashMap.addParam("wmode",    "transparent");
+                            flashMap.addParam("flashvars",  "color=0099FF;logo=1;city=591691");
+                            flashMap.write("flash_container_tt4f143a442eb98");
+                                </script></td></tr><tr><td style="text-align: center; font-weight: bold"><a href="http://24timezones.com/world_directory/time_in_bangkok.php" target="_blank" style="text-decoration: none" title="correct time Bangkok">Bangkok</a></td></tr></table>
+
+
+                </div>
+                <ui:insert name="left">Left</ui:insert>
+            </div>
+
+            <div id="extras">
+                <span style="font-weight: bold">Welcome, <span style=" color: red">#{facesContext.externalContext.userPrincipal.name}</span> !</span> <br/>
+                <a href="#{jSFController.path}/Admin/MyAccount.xhtml">My Account</a><br/>
+                <a href="#{jSFController.path}/Admin/ChangePassword.xhtml">Change Password</a><br/>
+                <h:form>
+                    <p:commandLink action="#{jSFController.logOut()}" value="Log out!"/>
+                </h:form>
+                <ui:insert name="right">Right</ui:insert>
+
+            </div>
+
+            <div id="content">
+
+                <ui:insert name="content">Content</ui:insert>
+
+
+            </div>
+
+            <div id="footer">
+                <ui:insert name="bottom">Bottom</ui:insert>
+                <br/>
+                <br/>
+                <span>&copy; 2012 <a href="#">Group 1 - C0908G - Sem 4 - FPT Aptech Education</a></span><br />
+            </div>
+
+        </div>
+    </h:body>
+
+</html>
