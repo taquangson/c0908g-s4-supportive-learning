@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <ui:composition template="./cmmTemplate.xhtml">
+
+            <ui:define name="top">              
+
+            </ui:define>
+
+            <ui:define name="left">
+                <!-- Menu cho nguoi dung chua dang nhap-->
+                <h:panelGroup id="other" rendered="#{jSFController.flagLogin}">
+                    <ul class="avmenu">
+                        <li><a class="current" href="#{jSFController.path}/index.xhtml">Home</a></li>
+                        <li><a href="#">Assignment</a></li>
+                        <li><a href="#">Upload Assignment</a></li>
+                        <li><a href="#">Marks </a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Feedback </a></li>
+                    </ul>
+
+                    <div class="announce">
+                        <h2>Latest news:</h2>
+                        <p><strong>Jan 10, 2011:</strong><br />
+                            Updated to v1.5.</p>
+                    </div>
+                </h:panelGroup>
+                <!-- Menu danh cho Student -->
+                <h:panelGroup id="student" rendered="#{jSFController.flag}">
+                    <ul class="avmenu">
+                        <li><a class="current" href="#{jSFController.path}/index.xhtml">Home</a></li>
+                        <li><a href="#">Assignment</a></li>
+                        <li><a href="#">Upload Assignment</a></li>
+                        <li><a href="#">Marks </a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Feedback </a></li>
+                    </ul>
+
+                    <div class="announce">
+                        <h2>Latest news:</h2>
+                        <p><strong>Jan 10, 2011:</strong><br />
+                            Updated to v1.5.</p>
+                    </div>
+                </h:panelGroup>
+                <!-- Menu danh cho Admin -->
+                <h:panelGroup rendered="#{jSFController.flagAdmin}">
+                    <ul class="avmenu">
+                        <li><a class="current" href="#{jSFController.path}/Admin/HomePage.xhtml">Go to Admin cPanel</a></li>
+                        <li><a href="#">Assignment</a></li>
+                        <li><a href="#">Upload Assignment</a></li>
+                        <li><a href="#">Marks </a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Feedback </a></li>
+                    </ul>
+
+                    <div class="announce">
+                        <h2>Latest news:</h2>
+                        <p><strong>Jan 10, 2011:</strong><br />
+                            Updated to v1.5.</p>
+                    </div>
+                </h:panelGroup>
+                <!-- Menu danh cho Staff -->
+                <h:panelGroup rendered="#{jSFController.flagStaff}">
+                    Toi la staff
+                    <ul class="avmenu">
+                        <li><a class="current" href="#{jSFController.path}/Staff/HomePage.xhtml">Home</a></li>
+                        <li><a href="#">Assignment</a></li>
+                        <li><a href="#">Uploaded Assignment</a></li>
+                        <li><a href="#">Marks </a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Feedback </a></li>
+                    </ul>
+
+                    <div class="announce">
+                        <h2>Latest news:</h2>
+                        <p><strong>Jan 10, 2011:</strong><br />
+                            Updated to v1.5.</p>
+                    </div>
+                </h:panelGroup>
+            </ui:define>
+
+            <ui:define name="content">
+                content
+                <h:form><p:commandButton value="Hello from PrimeFaces" onclick="dlg1.show();" type="button" /><p:dialog header="PrimeFaces Dialog" widgetVar="dlg1" width="500">For more information visit <a href="http://primefaces.org">http://primefaces.org</a>.</p:dialog></h:form>
+
+                <h3>For more templates, tutorials and resources...</h3>
+                <img class="alignright" src="img/test.jpg" height="225" width="300" alt="Example content image using the class .alignright" />
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h3>For more templates, tutorials and resources...</h3>
+                <img class="alignright" src="img/test.jpg" height="225" width="300" alt="Example content image using the class .alignright" />
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            </ui:define>
+
+            <ui:define name="right">
+                <h:panelGroup rendered="#{jSFController.flagAdmin}">
+                    <span style="font-weight: bold">Welcome, <span style=" color: red">#{facesContext.externalContext.userPrincipal.name}</span> !</span> <br/>
+                    <a href="#">My Account</a><br/>
+                    <a href="#">Change Password</a><br/>
+                    <h:form>
+                        <p:commandLink action="#{jSFController.logOut()}" value="Log out!"/>
+                    </h:form>
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{jSFController.flagStaff}">
+                    <span style="font-weight: bold">Welcome, <span style=" color: red">#{facesContext.externalContext.userPrincipal.name}</span> !</span> <br/>
+                    <a href="#">My Account</a><br/>
+                    <a href="#">Change Password</a><br/>
+                    <h:form>
+                        <p:commandLink action="#{jSFController.logOut()}" value="Log out!"/>
+                    </h:form>
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{jSFController.flag}">
+                    <span style="font-weight: bold">Welcome, <span style=" color: red">#{facesContext.externalContext.userPrincipal.name}</span> !</span> <br/>
+                    <a href="#">My Account</a><br/>
+                    <a href="#">Change Password</a><br/>
+                    <h:form>
+                        <p:commandLink action="#{jSFController.logOut()}" value="Log out!"/>
+                    </h:form>
+                </h:panelGroup>
+                <h:panelGroup rendered="#{jSFController.flagLogin}">
+                    <h:form >
+                        <p:commandButton style="vertical-align: bottom" action="#{jSFController.logIn()}" value="Log in here!" />
+                        <img style="vertical-align: bottom" src="#{jSFController.path}/img/login.jpg" width="35" height="35"/>
+                    </h:form>
+                </h:panelGroup>
+                <br/>
+                <h2>Additional info</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                <h2>Sample links:</h2>
+                <ul>
+                    <li><a href="http://andreasviklund.com/templates/">More free templates</a></li>
+                    <li><a href="http://andreasviklund.com/blog/">Andreas' blog</a></li>
+                    <li><a href="http://andreasviklund.com/wordpress-themes/">WordPress themes</a></li>
+                </ul>
+
+                <h2>Sample search:</h2>
+                <form action="get" id="searchbox">
+                    <div>
+                        <label for="searchform">Find:</label> <input type="text" value="(demo only)" name="searchform" id="searchform" /> <input type="hidden" id="searchsubmit" value="(demo only)" />
+                    </div>
+                </form>
+            </ui:define>
+
+            <ui:define name="bottom">
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

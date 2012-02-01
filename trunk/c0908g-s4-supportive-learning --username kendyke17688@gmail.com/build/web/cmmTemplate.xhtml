@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      >
+
+    <h:head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Your description goes here" />
+        <meta name="keywords" content="your,keywords,goes,here" />
+        <meta name="author" content="Your Name" />
+        <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/variant-creative.css" media="all" />
+        <title>Royal Educational Academy</title>
+        <script language="JavaScript" type="text/javascript">
+            function validate(){
+                var t1 = document.getElementById("user");
+                var t2 = document.getElementById("pass");
+                if(t1.value == ""){
+                    alert("Username is not empty!");
+                    t1.focus();
+                    return false;
+                }
+                else if(t2.value ==""){
+                    alert("Password is not empty!");
+                    t2.focus();
+                    return false;
+                }else{
+                 return true;   
+                }
+                    
+                
+            }
+        </script>
+
+    </h:head>
+
+    <h:body onload="document.getElementById('user').focus()">
+        <div id="wrap">
+            <div id="header">
+                <h1><a href="#{jSFController.path}/index.xhtml">Royal Educational Academy</a></h1>
+                <p>The dream of Innovation</p>
+                <ui:insert name="top">Top</ui:insert>
+            </div>
+
+            <div id="leftside">                
+                <ui:insert name="left">Left</ui:insert>
+            </div>
+
+            <div id="extras">
+                <ui:insert name="right">Right</ui:insert>
+            </div>
+
+            <div id="content">
+                <ui:insert name="content">Content</ui:insert>
+
+            </div>
+
+            <div id="footer">
+                <ui:insert name="bottom">Bottom</ui:insert>
+                <br/>
+                <br/>
+                <span>&copy; 2012 Group 1 - C0908G - Sem 4 - FPT Aptech Education</span><br />
+            </div>
+
+        </div>
+    </h:body>
+
+</html>
