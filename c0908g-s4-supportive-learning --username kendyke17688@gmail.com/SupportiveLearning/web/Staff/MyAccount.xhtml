@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Stafftemplate.xhtml">
+
+            <ui:define name="top">
+
+            </ui:define>
+
+            <ui:define name="left">
+
+            </ui:define>
+
+            <ui:define name="right">
+
+            </ui:define>
+
+            <ui:define name="content">
+
+                <h2 style="color: red ; text-align: center">My Account Details</h2>
+                <div style="width: 460px ; margin: auto">
+                    <h:form prependId="false">
+                        <p:dataList var="user" value="#{userBean.showMyAccount()}" itemType="none">
+
+                            <table width="420px">
+                                <tr>
+                                    <td style="width: 100px; text-align: right">Username :</td>
+                                    <td style="width: 340px; text-align: left">#{userBean.myAcc.username}</td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width: 100px; text-align: right">Fullname :</td>
+                                    <td style="width: 340px; text-align: left">                                       
+                                        #{userBean.myAcc.fullname}
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width: 100px; text-align: right">Groupname :</td>
+                                    <td class="columnright">#{userBean.myAcc.groupname}</td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width: 100px; text-align: right">Gender :</td>
+                                    <td class="columnright">#{user.gender}</td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width: 100px; text-align: right">Avatar :</td>
+                                    <td class="columnright"></td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width: 100px; text-align: right">Address :</td>
+                                    <td class="columnright">#{userBean.myAcc.address}</td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width: 100px; text-align: right">Birthday :</td>
+                                    <td class="columnright">#{user.birthday}</td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width: 100px; text-align: right">Phone :</td>
+                                    <td class="columnright">#{user.phone}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 100px; text-align: right">Email :</td>
+                                    <td class="columnright">#{user.email}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 100px; text-align: right">Start Date :</td>
+                                    <td class="columnright">#{user.startdate}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 100px; text-align: right">End Date :</td>
+                                    <td class="columnright">#{user.enddate}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 100px; text-align: right">Description :</td>
+                                    <td style="width: 300px; text-align: left">#{user.description}</td>
+                                </tr>
+                            </table> 
+
+                        </p:dataList>
+                        <p:growl id="growl" showDetail="true" showSummary="true"/>
+
+                        <p:commandButton value="Change" oncomplete="updateUser.show()"/>
+
+                        <!--Show Update Details-->
+                        <p:dialog widgetVar="updateUser"
+                                  header="Update User Details"
+                                  resizable="false"
+                                  width="550"
+                                  showEffect="slide"
+                                  hideEffect="slide"
+                                  modal="true">
+                            <h:panelGrid id="display" columns="2" cellpadding="4">
+                                Full-Name :
+                                <p:inputText value="#{userBean.fullname}" maxlength="50" required="true" requiredMessage="Enter Full-Name"/>
+
+                                Gender :
+                                <h:selectOneMenu value="#{userBean.gender}">
+                                    <f:selectItem itemLabel="Male" itemValue="Male"/>
+                                    <f:selectItem itemLabel="Female" itemValue="Famale"/>
+                                </h:selectOneMenu>
+
+                                New Avatar:
+                                <p:graphicImage value="#{userBean.filePath}" width="150" height="150" id="avatar"></p:graphicImage>
+
+                                Avatar :
+                                <p:fileUpload fileUploadListener="#{userBean.handleAvatarUpload}"
+                                              update="growl,avatar"  
+                                              sizeLimit="1073741824"
+                                              multiple="false" label="choose"
+                                              allowTypes="*.jpg;*.png;*.gif;"
+                                              description="Images"/>    
+
+                                Address:
+                                <p:inputText value="#{userBean.address}"/>
+
+                                Birthday :
+                                <p:calendar maxdate="now" yearRange="20"  mindate="1/1/1900" navigator="true" value="#{userBean.birthday}"/>
+
+                                Phone :
+                                <p:inputText value="#{userBean.phone}" maxlength="50"/>
+                                Email :
+                                <p:inputText value="#{userBean.email}"
+                                             required="true" requiredMessage="Email is not empty."
+                                             validatorMessage="Email is not valid." maxlength="100">
+
+                                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
+                                </p:inputText>
+                                Start Date :
+                                <p:calendar maxdate="now" yearRange="20"  mindate="1/1/1900" navigator="true" value="#{userBean.startdate}"/>
+                                Finish Date:
+                                <p:calendar maxdate="1/1/2100" mindate="now" navigator="true" value="#{userBean.enddate}"/>
+                                Description :
+                                <p:inputTextarea maxHeight="180" style=" width: 300px" value="#{userBean.description}" rows="2" cols="40" validatorMessage="Description is greater than allowable maximum of 200 char.">
+                                    <f:validateLength maximum="200"/>
+                                </p:inputTextarea>
+                                
+                                <p:commandButton value="Cancel" onclick="updateUser.hide()" />
+                                <p:commandButton value="Save Change" ajax="false" update="growl" actionListener="#{userBean.updateMyAccount(e)}"/>
+
+                            </h:panelGrid>  
+
+                        </p:dialog>
+
+                    </h:form>
+                </div>
+
+            </ui:define>
+
+            <ui:define name="bottom">
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -105,8 +105,8 @@
             <ui:define name="right">
                 <h:panelGroup rendered="#{jSFController.flagAdmin}">
                     <span style="font-weight: bold">Welcome, <span style=" color: red">#{facesContext.externalContext.userPrincipal.name}</span> !</span> <br/>
-                    <a href="#">My Account</a><br/>
-                    <a href="#">Change Password</a><br/>
+                    <a href="#{jSFController.path}/Admin/MyAccount.xhtml">My Account</a><br/>
+                    <a href="#{jSFController.path}/Admin/ChangePassword.xhtml">Change Password</a><br/>
                     <h:form>
                         <p:commandLink action="#{jSFController.logOut()}" value="Log out!"/>
                     </h:form>
@@ -114,8 +114,8 @@
 
                 <h:panelGroup rendered="#{jSFController.flagStaff}">
                     <span style="font-weight: bold">Welcome, <span style=" color: red">#{facesContext.externalContext.userPrincipal.name}</span> !</span> <br/>
-                    <a href="#">My Account</a><br/>
-                    <a href="#">Change Password</a><br/>
+                   <a href="#{jSFController.path}/Staff/MyAccount.xhtml">My Account</a><br/>
+                    <a href="#{jSFController.path}/Staff/ChangePassword.xhtml">Change Password</a><br/>
                     <h:form>
                         <p:commandLink action="#{jSFController.logOut()}" value="Log out!"/>
                     </h:form>

@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Admintemplate.xhtml">
+
+            <ui:define name="top">
+
+            </ui:define>
+
+            <ui:define name="left">
+
+            </ui:define>
+
+            <ui:define name="right">
+
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:dataTable var="user" value="#{userBean.allAccount}"
+                                 paginator="true"
+                                 rows="10" 
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                                 rowsPerPageTemplate="10,15,20,30,50"
+                                 widgetVar="userTable"   
+                                 emptyMessage="No Curriculum found in Database with inserted text!"
+                                 selection="#{userBean.selectedUser}"
+                                 selectionMode="single"                                 
+                                 > 
+                        <f:facet name="header">  
+                            <h2 style="color: red">List of Curriculums</h2> <br/> 
+
+                            <h:outputText value="Search all fields:" />  
+                            <p:inputText id="globalFilter" onkeyup="userTable.filter()" style="width:150px" />  
+
+                        </f:facet>  
+                        <p:column filterBy="#{user.username}" filterMatchMode="contains" >  
+                            <f:facet name="header">  
+                                Username  
+                            </f:facet>  
+
+                            <h:outputText value="#{user.username}" />  
+
+                            <f:facet name="footer">  
+
+                            </f:facet>  
+                        </p:column>  
+                        <p:column filterBy="#{user.groupname}" headerText="Groupname" filterMatchMode="contains">  
+                            <h:outputText value="#{user.groupname}" />  
+                        </p:column>
+                        <p:column headerText="Fullname" filterBy="#{user.fullname}" filterMatchMode="contains">  
+                            <h:outputText value="#{user.fullname}" />  
+                        </p:column>  
+
+                        <p:column headerText="Action" >  
+
+                        </p:column>  
+                        <f:facet name="footer"> 
+
+                            In total there are #{userBean.countAll()} users.  
+                        </f:facet>  
+                    </p:dataTable>
+                    <p:commandButton value="View" oncomplete="UserDetails.show()" update="form:display"/>
+
+                    <!--Show Details-->
+                    <p:dialog widgetVar="UserDetails"
+                              header="User Details"
+                              resizable="false"
+                              width="250"
+                              modal="true">
+                        <h:panelGrid id="display" columns="2" cellpadding="4">  
+                            <h:outputText value="Username:" />  
+                            <h:outputText value="#{userBean.selectedUser.username}" />  
+
+                            <h:outputText value="Fullname:" />  
+                            <h:outputText value="#{userBean.selectedUser.fullname}" />  
+
+                            <h:outputText value="Group Name:" />  
+                            <h:outputText value="#{userBean.selectedUser.groupname}" />  
+
+                        </h:panelGrid>  
+
+                    </p:dialog>
+
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
