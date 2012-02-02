@@ -22,8 +22,7 @@
             <ui:define name="content">
                 <h:form>
                     <h2 style="text-align: center">Add New User</h2>
-                    <table>
-
+                    <table width="586px">
                         <tr>
                             <td class="columnleft">Group :</td>
                             <td><h:selectOneMenu value="#{userBean.groupname}" style="width: 170px">
@@ -31,10 +30,15 @@
                                     <f:selectItem itemLabel="Staff / Teacher" itemValue="Staff"/>
                                     <f:selectItem itemLabel="Student / User" itemValue="Student"/>
                                 </h:selectOneMenu></td>
+                            <td rowspan="5" style="text-align: left; vertical-align: top">
+                                <p:graphicImage value="#{userBean.filePath}" width="150" height="150" id="avatar"></p:graphicImage>
+                                <br/>Image size: 150 x 150(px)
+                            </td>
                         </tr>
                         <tr>
                             <td class="columnleft">Full-Name :</td>
-                            <td><p:inputText value="#{userBean.fullname}" maxlength="50" required="true" requiredMessage="Enter Full-Name"/></td>
+                            <td><p:inputText value="#{userBean.fullname}" maxlength="50" required="true" requiredMessage="Enter Full-Name"/>
+                            </td>
                         </tr>
                         <tr>
                             <td class="columnleft">Username :</td>
@@ -56,47 +60,61 @@
                         </tr>
                         <tr>
                             <td class="columnleft">Avatar :</td>
-                            <td></td>
+                            <td colspan="2" style="width: 300px"><p:fileUpload fileUploadListener="#{userBean.handleAvatarUpload}"
+                                              update="growl,avatar"  
+                                              sizeLimit="1073741824"
+                                              multiple="false" label="choose"
+                                              allowTypes="*.jpg;*.png;*.gif;"
+                                              description="Images"/>    
+                                </td>
                         </tr>
                         <tr>
                             <td class="columnleft">Address:</td>
                             <td><p:inputText value="#{userBean.address}"/></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td class="columnleft">Birthday :</td>
                             <td><p:calendar maxdate="now" yearRange="20"  mindate="1/1/1900" navigator="true" value="#{userBean.birthday}"/></td>
+                        <td></td>
                         </tr>
                         <tr>
                             <td class="columnleft">Phone :</td>
                             <td><p:inputText value="#{userBean.phone}" maxlength="50"/></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td class="columnleft">Email :</td>
                             <td><p:inputText value="#{userBean.email}"
                                              required="true" requiredMessage="Email is not empty."
                                              validatorMessage="Email is not valid." maxlength="100">
-                                    
+
                                     <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
                                 </p:inputText>
                             </td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td class="columnleft">Start Date :</td>
                             <td> <p:calendar maxdate="now" yearRange="20"  mindate="1/1/1900" navigator="true" value="#{userBean.startdate}"/></td>
+                        <td></td>
                         </tr>
                         <tr>
                             <td class="columnleft">Finish Date:</td>
                             <td><p:calendar maxdate="1/1/2100" mindate="now" navigator="true" value="#{userBean.enddate}"/></td>
+                        <td></td>
                         </tr>
                         <tr>
                             <td class="columnleft">Description :</td>
-                            <td class="columnright"><p:inputTextarea maxHeight="180" value="#{userBean.description}" rows="2" cols="40" validatorMessage="Description is greater than allowable maximum of 200 char.">
+                            <td class="columnright" colspan="2"><p:inputTextarea maxHeight="180" value="#{userBean.description}" rows="2" cols="40" validatorMessage="Description is greater than allowable maximum of 200 char.">
                                     <f:validateLength maximum="200"/>
                                 </p:inputTextarea></td>
+                            
                         </tr>
                         <tr>
-                            <p:growl id="growl" showSummary="true" sticky="true" /> 
-                            <td class="columnleft"><p:commandButton ajax="false" value="Create New" update="growl" action="#{userBean.addUser(e)}"/></td>
+                            <p:growl id="growl" showSummary="true" showDetail="true"  /> 
+                            <td class="columnleft"><p:commandButton  ajax="true" value="Create New" update="growl" actionListener="#{userBean.addUser(e)}"/></td>
+                            <td></td>
                             <td></td>
                         </tr>
                     </table>            
