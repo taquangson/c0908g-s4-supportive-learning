@@ -30,16 +30,15 @@
         <div id="wrap">
             <div id="header">
                 <h1><a href="#{jSFController.path}/index.xhtml">Royal Educational Academy</a></h1>
-                <h2 style="text-align: center">-Admin cPanel-</h2>
+                <h2 style="text-align: center">-Staff cPanel-</h2>
                 <ui:insert name="top">Top</ui:insert>
             </div>
 
             <div id="leftside">
                 <ul class="avmenu">
-                    <li><a class="current" href="#{jSFController.path}/Admin/HomePage.xhtml">Dashboard</a></li>
-                    <li><a href="#{jSFController.path}/Admin/UserManagement.xhtml">Users Management</a></li>
-                    <li><a href="#{jSFController.path}/Admin/CurriculumManagement.xhtml">Curriculums Management</a></li>
-                    <li><a href="#">FAQs Management</a>
+                    <li><a class="current" href="#{jSFController.path}/Staff/HomePage.xhtml">Dashboard</a></li>
+                    <li><a href="#">FAQ Management</a></li>
+                    <li><a href="#">Subpages</a>
                         <ul>
                             <li><a href="#">Subpage 1</a></li>
                             <li><a href="#">Subpage 2</a></li>
@@ -66,8 +65,8 @@
 
             <div id="extras">
                 <span style="font-weight: bold">Welcome, <span style=" color: red">#{facesContext.externalContext.userPrincipal.name}</span> !</span> <br/>
-                <a href="#{jSFController.path}/Admin/MyAccount.xhtml">My Account</a><br/>
-                <a href="#{jSFController.path}/Admin/ChangePassword.xhtml">Change Password</a><br/>
+                <a href="#{jSFController.path}/Staff/MyAccount.xhtml">My Account</a><br/>
+                <a href="#{jSFController.path}/Staff/ChangePassword.xhtml">Change Password</a><br/>
                 <h:form>
                     <p:commandLink action="#{jSFController.logOut()}" value="Log out!"/>
                 </h:form>
